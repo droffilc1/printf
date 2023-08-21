@@ -29,7 +29,6 @@ int print_number(va_list ap)
 		divisor *= 10;
 	}
 
-<<<<<<< HEAD
 	for (; divisor != 0;)
 	{
 		len += _putchar('0' + (num / divisor));
@@ -38,7 +37,4 @@ int print_number(va_list ap)
 	}
 
 	return (len);
-=======
-	_putchar((n % 10) + '0');
->>>>>>> 8a0d0b1e0fd5883fa2ae81c57e3463f6a0c1e340
 }
