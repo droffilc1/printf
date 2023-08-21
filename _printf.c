@@ -1,41 +1,33 @@
 #include "main.h"
 
+/**
+ * _printf - custom printf function
+ * @format: The format string
+ * @...: Additional arguments based on format
+ *
+ * Return: Number of characters printed
+ */
+
 int _printf(const char *format, ...)
 {
-	int i, j;
-	char *str;
+	int count;
 	va_list ap;
+
+	spec_t specs[] = {
+		{"c", handle_char},
+		{"s", handle_string},
+		{"d", handle_integer},
+		{"i", handle_integer},
+		{"%", handle_percent},
+		{NULL, NULL}
+	};
+
+	if (format == NULL)
+		return (-1);
+
 	va_start(ap, format);
 
-	for (i = 0; format[i]; i++)
-	{
-		while(format[i] != '%')
-		{
-			if (format[i] == '\0')
-				return (i);
-			_putchar(format[i]);
-			i++;
-		}
-		i++;
-		switch(format[i])
-		{
-			case 'c': j = va_arg(ap, int);
-				  _putchar(j);
-				  break;
-			case 's': str = va_arg(ap, char *);
-				  _puts(str);
-				  break;
-			case 'd': j = va_arg(ap, int);
-				  print_number(j);
-				  break;
-			case 'i': j = va_arg(ap, int);
-				  print_number(j);
-				  break;
-			default: j = va_arg(ap, int);
-				 _putchar(format[i]);
-				 break;
-		}
-	}
+	count = get_fmt(format, specs, ap);
 	va_end(ap);
-	return (i);
+	return (count);
 }

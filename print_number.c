@@ -2,23 +2,39 @@
 
 /**
  * print_number - prints an integer
- * @n: The number to be checked
+ * @ap: arguments
  *
- * Return: nothing
+ * Return: number of arguments printed
  */
-void print_number(int n)
+int print_number(va_list ap)
 {
-	if (n < 1)
+	int i, divisor, len;
+	unsigned int num;
+
+	i = va_arg(ap, int);
+	divisor = 1;
+	len = 0;
+	if (i < 0)
 	{
-		_putchar('-');
-		n = -n;
+		len += _putchar('-');
+		num = i * -1;
+	}
+	else
+	{
+		num = i;
 	}
 
-	if (n / 10)
+	for (; num / divisor > 9;)
 	{
-		print_number(n / 10);
+		divisor *= 10;
 	}
-	_putchar((n % 10) + '0');
 
+	for (; divisor != 0;)
+	{
+		len += _putchar('0' + (num / divisor));
+		num %= divisor;
+		divisor /= 10;
+	}
+
+	return (len);
 }
-

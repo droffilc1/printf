@@ -1,12 +1,30 @@
+#ifndef MAIN_H
+#define MAIN_H
+
 #include <stdio.h>
 #include <stdarg.h>
 #include <unistd.h>
-#include <stdlib.h>
 
-#ifndef MAIN_H
-#define MAIN_H
-void _puts(char *str);
-int _putchar(char c);
+/**
+ * struct spec - Struct spec
+ *
+ * @fmt:The operator
+ * @f: The associated function
+ */
+typedef struct spec
+{
+	char *fmt;
+	int (*f)(va_list);
+} spec_t;
+
 int _printf(const char *format, ...);
-void print_number(int n);
+int get_fmt(const char *format, spec_t specs[], va_list ap);
+
+int _putchar(char c);
+int print_number(va_list ap);
+
+int handle_char(va_list ap);
+int handle_string(va_list ap);
+int handle_integer(va_list ap);
+int handle_percent(__attribute__((unused))va_list ap);
 #endif /* MAIN_H */
