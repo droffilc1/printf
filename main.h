@@ -1,7 +1,11 @@
 #ifndef MAIN_H
 #define MAIN_H
-void _puts(char *str);
+#include <stdarg.h>
+
 int _putchar(char c);
-int _printf(const char *format, ...);
+void _puts(char *str);
 void print_number(int n);
+void print_binary(unsigned int n);
+int _printf(const char *format, ...);
+
 #endif /* MAIN_H */
