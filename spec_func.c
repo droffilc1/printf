@@ -25,7 +25,7 @@ int handle_string(va_list ap)
 	str = va_arg(ap, char *);
 	if (str == NULL)
 	{
-		str = "(nil)";
+		str = "(null)";
 	}
 
 	for (i = 0; str[i] != '\0'; i++)
