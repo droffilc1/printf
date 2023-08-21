@@ -1,9 +1,10 @@
 #include "main.h"
 #include <stdarg.h>
+#include <stdio.h>
 #include <string.h>
 
 /**
- * _printf - Custom printf function
+ * _printf - custom printf function
  * @format: The format string
  * @...: Additional arguments based on format
  *
@@ -17,21 +18,35 @@ int _printf(const char *format, ...)
 
     va_start(args, format);
 
-    i = 0;
-
-    while (format[i])
+    for (i = 0; format[i] != '\0'; i++)
     {
-        if (format[i] != '%')
+        if (format[i] == '%')
         {
-            _putchar(format[i]);
-            printed_chars++;
+            i++;
+            if (format[i] == 'c')
+            {
+                char c = va_arg(args, int);
+                putchar(c);
+                printed_chars++;
+            }
+            else if (format[i] == 's')
+            {
+                char *str = va_arg(args, char *);
+                fputs(str, stdout);
+                printed_chars += strlen(str);
+            }
+            else if (format[i] == '%')
+            {
+                putchar('%');
+                printed_chars++;
+            }
+            /* can add more conversion specifiers here if needed */
         }
         else
         {
-            i++;
-            printed_chars += handle_conversion(format, &i, args);
+            putchar(format[i]);
+            printed_chars++;
         }
-        i++;
     }
 
     va_end(args);
