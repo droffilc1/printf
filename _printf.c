@@ -12,10 +12,12 @@
 int _printf(const char *format, ...)
 {
     va_list args;
-    int i = 0; /* Character counter */
-    int printed_chars = 0; /* Total printed characters */
+    int i;
+    int printed_chars = 0;
 
     va_start(args, format);
+
+    i = 0;
 
     while (format[i])
     {
@@ -27,33 +29,11 @@ int _printf(const char *format, ...)
         else
         {
             i++;
-            if (format[i] == 'c')
-            {
-                _putchar(va_arg(args, int));
-                printed_chars++;
-            }
-            else if (format[i] == 's')
-            {
-                _puts(va_arg(args, char *));
-                printed_chars += strlen(va_arg(args, char *));
-            }
-            else if (format[i] == 'd' || format[i] == 'i')
-            {
-                print_number(va_arg(args, int));
-            }
-            else if (format[i] == 'b')
-            {
-                print_binary(va_arg(args, unsigned int));
-            }
-            else if (format[i] == '%')
-            {
-                _putchar('%');
-                printed_chars++;
-            }
+            printed_chars += handle_conversion(format, &i, args);
         }
         i++;
     }
 
     va_end(args);
-    return (printed_chars);
+    return printed_chars;
 }
