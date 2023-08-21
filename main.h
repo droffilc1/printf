@@ -27,4 +27,8 @@ int handle_char(va_list ap);
 int handle_string(va_list ap);
 int handle_integer(va_list ap);
 int handle_percent(__attribute__((unused))va_list ap);
+int handle_binary(va_list ap);
+int handle_unknown(va_list ap);
+int print_binary(unsigned int n);
+
 #endif /* MAIN_H */

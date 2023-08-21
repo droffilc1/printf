@@ -18,6 +18,8 @@ int _printf(const char *format, ...)
 		{"d", handle_integer},
 		{"i", handle_integer},
 		{"%", handle_percent},
+		{"b", handle_binary},
+		{"r", handle_unknown},
 		{NULL, NULL}
 	};
 
