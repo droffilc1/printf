@@ -7,5 +7,6 @@ void _puts(char *str);
 void print_number(int n);
 void print_binary(unsigned int n);
 int _printf(const char *format, ...);
+int main(void);
 
 #endif /* MAIN_H */
