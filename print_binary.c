@@ -8,11 +8,15 @@
  */
 int print_binary(unsigned int n)
 {
+	int len = 0;
+
 	if (n > 1)
 	{
-		return print_binary(n / 2) + 1;
+		len += print_binary(n / 2);
 	}
 
 	_putchar((n % 2) + '0');
-	return (1);
+	len++;
+
+	return (len);
 }
