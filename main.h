@@ -1,8 +1,3 @@
-#include <stdio.h>
-#include <stdarg.h>
-#include <unistd.h>
-#include <stdlib.h>
-
 #ifndef MAIN_H
 #define MAIN_H
 void _puts(char *str);

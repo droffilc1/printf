@@ -1,41 +1,50 @@
 #include "main.h"
+#include <stdio.h>
+#include <stdarg.h>
 
+/**
+ * _printf - prints formated string
+ * @format: string format
+ * @...: extra arguments
+ *
+ * Return: 0 (Success)
+ */
 int _printf(const char *format, ...)
 {
-	int i, j;
-	char *str;
 	va_list ap;
+	int i =  0;
+
 	va_start(ap, format);
 
-	for (i = 0; format[i]; i++)
+	while (format[i])
 	{
-		while(format[i] != '%')
+		if (format[i] != '%')
 		{
-			if (format[i] == '\0')
-				return (i);
 			_putchar(format[i]);
+		}
+		else
+		{
 			i++;
+			if (format[i] == 'c')
+			{
+				_putchar(va_arg(ap, int));
+			}
+			else if (format[i] == 's')
+			{
+				_puts(va_arg(ap, char *));
+			}
+			else if (format[i] == 'd' || format[i] == 'i')
+			{
+				print_number(va_arg(ap, int));
+			}
+			else
+			{
+				_putchar(format[i]);
+			}
 		}
 		i++;
-		switch(format[i])
-		{
-			case 'c': j = va_arg(ap, int);
-				  _putchar(j);
-				  break;
-			case 's': str = va_arg(ap, char *);
-				  _puts(str);
-				  break;
-			case 'd': j = va_arg(ap, int);
-				  print_number(j);
-				  break;
-			case 'i': j = va_arg(ap, int);
-				  print_number(j);
-				  break;
-			default: j = va_arg(ap, int);
-				 _putchar(format[i]);
-				 break;
-		}
 	}
+
 	va_end(ap);
 	return (i);
 }
