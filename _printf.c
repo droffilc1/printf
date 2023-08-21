@@ -8,15 +8,13 @@
  * @format: The format string
  * @...: Additional arguments based on format
  *
- * Return: Number of characters printed (excluding null byte)
+ * Return: Number of characters printed
  */
 int _printf(const char *format, ...)
 {
 	va_list args;
 	int i;
 	int printed_chars = 0;
-	char c;
-	char *str;
 
 	va_start(args, format);
 
@@ -27,26 +25,24 @@ int _printf(const char *format, ...)
 			i++;
 			if (format[i] == 'c')
 			{
-				c = va_arg(args, int);
-				putchar(c);
-				printed_chars++;
+				/* Handle 'c'*/
 			}
 			else if (format[i] == 's')
 			{
-				str = va_arg(args, char *);
-				fputs(str, stdout);
-				printed_chars += strlen(str);
+				/* Handle 's' */
+			}
+			else if (format[i] == 'd' || format[i] == 'i')
+			{
+				printed_chars += handle_decimal(args); /* Call integer handler */
 			}
 			else if (format[i] == '%')
 			{
-				putchar('%');
-				printed_chars++;
+				/* Handle '%%' */
 			}
-			/* can add more conversion specifiers here if needed */
 		}
 		else
 		{
-			putchar(format[i]);
+			_putchar(format[i]);
 			printed_chars++;
 		}
 	}
