@@ -30,5 +30,6 @@ int handle_percent(__attribute__((unused))va_list ap);
 int handle_binary(va_list ap);
 int handle_unknown(va_list ap);
 int print_binary(unsigned int n);
-
+int handle_address(va_list ap);
+int print_hex(size_t n, int upper);
 #endif /* MAIN_H */
