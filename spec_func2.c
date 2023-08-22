@@ -22,10 +22,10 @@ int handle_unknown(va_list ap)
 int handle_address(va_list ap)
 {
 	void *p;
-	size_t n;
+	unsigned long int n;
 
 	p = va_arg(ap, void *);
-	n = (size_t)p;
+	n = (unsigned long int)p;
 	_putchar('0');
 	_putchar('x');
 	return (print_hex(n, 0));
