@@ -31,5 +31,6 @@ int handle_binary(va_list ap);
 int handle_unknown(va_list ap);
 int print_binary(unsigned int n);
 int handle_address(va_list ap);
-int print_hex(size_t n, int upper);
+int print_hex(unsigned long int n, unsigned long int c);
+int handle_ascii(va_list ap);
 #endif /* MAIN_H */
