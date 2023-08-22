@@ -8,14 +8,14 @@
  */
 int handle_unknown(va_list ap)
 {
-        _putchar('%');
-        _putchar(va_arg(ap, int));
-        return (2);
+	_putchar('%');
+	_putchar(va_arg(ap, int));
+	return (2);
 }
 
 /**
  * handle_address - prints address
- * ap: argumnets
+ * @ap: arguments
  *
  * Return: the address
  */
