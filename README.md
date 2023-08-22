@@ -20,6 +20,7 @@ To gain a deeper understanding of the C programming language.
 ## Reference
 
 + [Secrets of Printf](https://www.academia.edu/10297206/Secrets_of_printf)
++ [ASCII Table](https://www.geeksforgeeks.org/ascii-table)
 
 ## Project Structure
 
