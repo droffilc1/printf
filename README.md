@@ -21,6 +21,7 @@ To gain a deeper understanding of the C programming language.
 
 + [Secrets of Printf](https://www.academia.edu/10297206/Secrets_of_printf)
 + [ASCII Table](https://www.geeksforgeeks.org/ascii-table)
++ [printf - CS50 Manual Pages](https://manual.cs50.io/3/printf)
 
 ## Project Structure
 
