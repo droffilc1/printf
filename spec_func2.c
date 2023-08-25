@@ -33,19 +33,69 @@ int handle_unsigned(va_list ap)
  */
 int handle_hex(va_list ap)
 {
+	unsigned int n;
+	int count = 0;
+	int index = 0;
+	char hexDigits[32];
+	int i;
+	int rem;
 
-	int num;
-	char letter;
+	n = va_arg(ap, unsigned int);
 
-	num = va_arg(ap, int);
+	if (n == 0)
+	{
+		count += _putchar('0');
+		return (count);
+	}
 
-	for (num = 0; num < 10; num++)
-		_putchar(num % 10 + '0');
+	while (n > 0)
+	{
+		rem = n % 16;
+		hexDigits[index++] = (rem < 10) ? rem + '0' : rem - 10 + 'a';
+		n /= 16;
+	}
 
-	for (letter = 'a'; letter <= 'f'; letter++)
-		_putchar(letter);
+	for (i = index - 1; i >= 0; i--)
+	{
+		count += _putchar(hexDigits[i]);
+	}
+	return (count);
+}
+/**
+ * handle_hex_uppercase - print hexadecimal in uppercase
+ * @ap: arguments
+ *
+ * Return: hex characters
+ */
+int handle_hex_uppercase(va_list ap)
+{
+	unsigned int n;
+	int count = 0;
+	int index = 0;
+	char hexDigits[32];
+	int i;
+	int rem;
 
-	return (0);
+	n = va_arg(ap, unsigned int);
+
+	if (n == 0)
+	{
+		count += _putchar('0');
+		return (count);
+	}
+
+	while (n > 0)
+	{
+		rem = n % 16;
+		hexDigits[index++] = (rem < 10) ? rem + '0' : rem - 10 + 'A';
+		n /= 16;
+	}
+
+	for (i = index - 1; i >= 0; i--)
+	{
+		count += _putchar(hexDigits[i]);
+	}
+	return (count);
 }
 /**
  * handle_octal - prints the number as an octal
@@ -62,21 +112,22 @@ int handle_octal(va_list ap)
 	char octalDigits[32];
 	int i;
 
-	if (n == 0) {
+	if (n == 0)
+	{
 		count += _putchar('0');
-		return count;
+		return (count);
 	}
 
-	while (n > 0) {
+	while (n > 0)
+	{
 		octalDigits[index++] = (n % 8) + '0';
 		n /= 8;
 	}
 
-	for (i = index - 1; i >= 0; i--) {
+	for (i = index - 1; i >= 0; i--)
 		count += _putchar(octalDigits[i]);
-	}
 
-	return count;
+	return (count);
 
 }
 

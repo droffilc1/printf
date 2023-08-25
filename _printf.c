@@ -22,6 +22,7 @@ int _printf(const char *format, ...)
 		{"u", handle_unsigned},
 		{"o", handle_octal},
 		{"x", handle_hex},
+		{"X", handle_hex_uppercase},
 		{NULL, NULL}
 	};
 
