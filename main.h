@@ -29,5 +29,7 @@ int handle_integer(va_list ap);
 int handle_percent(__attribute__((unused))va_list ap);
 int handle_binary(va_list ap);
 int handle_unsigned(va_list ap);
+int handle_hex(va_list ap);
+int handle_octal(va_list ap);
 int print_binary(unsigned int n);
 #endif /* MAIN_H */

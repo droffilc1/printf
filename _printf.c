@@ -20,6 +20,8 @@ int _printf(const char *format, ...)
 		{"%", handle_percent},
 		{"b", handle_binary},
 		{"u", handle_unsigned},
+		{"o", handle_octal},
+		{"x", handle_hex},
 		{NULL, NULL}
 	};
 
