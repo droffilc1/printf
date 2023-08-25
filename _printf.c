@@ -19,8 +19,7 @@ int _printf(const char *format, ...)
 		{"i", handle_integer},
 		{"%", handle_percent},
 		{"b", handle_binary},
-		{"r", handle_unknown},
-		{"p", handle_address},
+		{"u", handle_unsigned},
 		{NULL, NULL}
 	};
 

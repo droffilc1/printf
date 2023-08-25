@@ -1,61 +1,29 @@
 #include "main.h"
 
 /**
- * print_hex - prints a number in hexadecimal
+ * handle_hex - prints a number in hexadecimal
  * @n: number to be printed
- * @upper: uppercase characters
+ * @c: number of characters
  *
  * Return: hexadecimal characters
  */
-/**
-* print_hex - function that prints an unsigned int in hexadecimal
-* @n: unsigned to be printed
-* @c: case of printing (0 = lower, 1 = upper)
-* Descriptions: prints unsigned in hexadecimal with _putchar
-* Return: size the output
-*/
-
-int print_hex(unsigned int long n, unsigned int long c)
+int handle_hex(unsigned int long n, unsigned int long c)
 {
-	unsigned long int len, powten, j, digit, num;
+	char hex_nums[] = "0123456789abcdef";
 	int count = 0;
-	char diff;
 
-	if (n != 0)
+	if (n / 16)
 	{
-		num = n;
-		len = 0;
-		if (c)
-			diff = 'A' - ':';
-		else
-			diff = 'a' - ':';
-		while (num != 0)
-		{
-			num /= 16;
-			len++;
-		}
-		powten = 1;
-		for (j = 1; j <= len - 1; j++)
-			powten *= 16;
-		for (j = 1; j <= len; j++)
-		{
-			digit = n / powten;
-			if (digit < 10)
-				_putchar(digit + '0');
-
-			else
-				_putchar(digit + '0' + diff);
-
-			count++;
-			n -= digit * powten;
-			powten /= 16;
-		}
+		count += handle_hex(n / 16, c);
+	}
+	if (c)
+	{
+		count += _putchar(hex_nums[n % 16] - 32 * (n % 16 > 9));
 	}
 	else
 	{
-		_putchar('0');
-		return (1);
+		count += _putchar(hex_nums[n % 16]);
 	}
+
 	return (count);
 }
-
