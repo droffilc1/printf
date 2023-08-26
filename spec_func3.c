@@ -47,16 +47,17 @@ int handle_address(va_list ap)
 	unsigned int index = sizeof(buffer) - 1;
 
 	if (ptr == NULL)
-		return ("(nil)(nil)");
-	count += _putchar('0');
-	count += _putchar('x');
-
-	if (n == 0)
 	{
-		count += _putchar('0');
+		count += _putchar('(');
+		count += _putchar('n');
+		count += _putchar('i');
+		count += _putchar('l');
+		count += _putchar(')');
 	}
 	else
 	{
+		count += _putchar('0');
+		count += _putchar('x');
 
 		while (n > 0)
 		{
