@@ -23,6 +23,8 @@ int _printf(const char *format, ...)
 		{"o", handle_octal},
 		{"x", handle_hex},
 		{"X", handle_hex_uppercase},
+		{"S", handle_non_printable},
+		{"p", handle_address},
 		{NULL, NULL}
 	};
 
