@@ -46,6 +46,8 @@ int handle_address(va_list ap)
 	unsigned int i;
 	unsigned int index = sizeof(buffer) - 1;
 
+	if (ptr == NULL)
+		return ("(nil)(nil)");
 	count += _putchar('0');
 	count += _putchar('x');
 
