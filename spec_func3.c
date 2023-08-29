@@ -74,3 +74,31 @@ int handle_address(va_list ap)
 
 	return (count);
 }
+/**
+ * handle_rev - prints a string, in reverse
+ * @ap: arguments
+ *
+ * Return: reversed string
+ */
+int handle_rev(va_list ap)
+{
+	char *s;
+	int i, j, len;
+
+	s = va_arg(ap, char *);
+
+	i = 0;
+
+	while (s[i] != '\0')
+	{
+		i++;
+	}
+
+	len = 1;
+
+	for (j = len - 1; j >= 0; j--)
+	{
+		_putchar(s[j]);
+	}
+	return (0);
+}

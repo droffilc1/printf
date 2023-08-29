@@ -34,5 +34,6 @@ int handle_hex_uppercase(va_list ap);
 int handle_octal(va_list ap);
 int handle_non_printable(va_list ap);
 int handle_address(va_list ap);
+int handle_rev(va_list ap);
 int print_binary(unsigned int n);
 #endif /* MAIN_H */
