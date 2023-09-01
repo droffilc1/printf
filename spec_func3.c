@@ -101,7 +101,7 @@ int handle_rev(va_list ap)
 {
 	char *s;
 	int len = 0;
-	int i;
+	int tel;
 
 	s = va_arg(ap, char *);
 
@@ -115,9 +115,9 @@ int handle_rev(va_list ap)
 		len++;
 	}
 
-	for (i = len - 1; i >= 0; i--)
+	for (tel = len - 1; tel >= 0; tel--)
 	{
-		_putchar(s[i]);
+		_putchar(s[tel]);
 	}
 
 	return (len);
