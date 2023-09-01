@@ -1,17 +1,20 @@
 #include "main.h"
 
 /**
- * handle_non_printable - handles non-printable characters
- * @ap: arguments
+ * handle_non_printable - Handles the custom S conversion specifier
+ * @ap: Arguments
  *
- * Return: printed string
+ * Return: Number of characters printed
  */
 int handle_non_printable(va_list ap)
 {
-	char *str = va_arg(ap, char *);
-	int count = 0;
+    char *str;
+    int count = 0;
+    char hex1, hex2;
 
-	if (str == NULL)
+    str = va_arg(ap, char *);
+
+    if (str == NULL)
     {
         return (_printf("(null)"));
     }
@@ -22,10 +25,9 @@ int handle_non_printable(va_list ap)
         {
             count += _putchar('\\');
             count += _putchar('x');
-            
-            // Print the ASCII code value in hexadecimal (always 2 characters)
-            char hex1 = (*str >> 4) & 0xF;
-            char hex2 = *str & 0xF;
+
+            hex1 = (*str >> 4) & 0xF;
+            hex2 = *str & 0xF;
 
             if (hex1 < 10)
                 count += _putchar(hex1 + '0');
