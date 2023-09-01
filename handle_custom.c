@@ -16,6 +16,11 @@ int handle_custom_string(va_list ap)
 		return (_printf("(null)"));
 	}
 
+	if (str[0] == '%' && str[1] == 'S')
+	{
+		str += 2;
+	}
+
 	for (; *str != '\0'; str++)
 	{
 		if (*str < 32 || *str >= 127)
