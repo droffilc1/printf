@@ -149,8 +149,8 @@ int handle_rot13(va_list ap)
 				break;
 			}
 		}
-	}
 		if (j == 53)
 			_putchar(str[i]);
+	}
 	return (i);
 }
