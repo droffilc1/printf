@@ -8,27 +8,42 @@
  */
 int handle_non_printable(va_list ap)
 {
-	void *ptr = va_arg(ap, void *);
+	char *str = va_arg(ap, char *);
 	int count = 0;
-	int numDigits;
-	unsigned long int address;
-	int shift;
-	int digit;
 
-	count += _putchar('0');
-	count += _putchar('x');
+	if (str == NULL)
+    {
+        return (_printf("(null)"));
+    }
 
-	address = (unsigned long int)ptr;
+    for (; *str != '\0'; str++)
+    {
+        if (*str < 32 || *str >= 127)
+        {
+            count += _putchar('\\');
+            count += _putchar('x');
+            
+            // Print the ASCII code value in hexadecimal (always 2 characters)
+            char hex1 = (*str >> 4) & 0xF;
+            char hex2 = *str & 0xF;
 
+            if (hex1 < 10)
+                count += _putchar(hex1 + '0');
+            else
+                count += _putchar(hex1 - 10 + 'A');
 
-	numDigits = sizeof(unsigned long int) * 2;
-	for (shift = (numDigits - 1) * 4; shift >= 0; shift -= 4)
-	{
-		digit = (address >> shift) & 0xF;
-		count += _putchar(digit < 10 ? digit + '0' : digit - 10 + 'a');
-	}
+            if (hex2 < 10)
+                count += _putchar(hex2 + '0');
+            else
+                count += _putchar(hex2 - 10 + 'A');
+        }
+        else
+        {
+            count += _putchar(*str);
+        }
+    }
 
-	return (count);
+    return (count);
 }
 /**
  * handle_address - prints a pointer
