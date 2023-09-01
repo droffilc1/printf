@@ -122,3 +122,35 @@ int handle_rev(va_list ap)
 
 	return (len);
 }
+/**
+ * handle_rot13 - Rotates string of letters by 13 characters
+ * @ap: arguments
+ *
+ * Return: converted string
+ */
+int handle_rot13(va_list ap)
+{
+	int i;
+	int j;
+	char *str;
+	char s[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char rot[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+
+	str = va_arg(ap, char *);
+	if (str == NULL)
+		return (-1);
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		for (j = 0; j <= 52; j++)
+		{
+			if (str[i] == s[j])
+			{
+				_putchar(rot[j]);
+				break;
+			}
+		}
+	}
+		if (j == 53)
+			_putchar(str[i]);
+	return (i);
+}
